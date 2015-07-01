@@ -1,0 +1,161 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Copyright (C) 2011 The Android Open Source Project
+
+     Licensed under the Apache License, Version 2.0 (the "License");
+     you may not use this file except in compliance with the License.
+     You may obtain a copy of the License at
+
+          http://www.apache.org/licenses/LICENSE-2.0
+
+     Unless required by applicable law or agreed to in writing, software
+     distributed under the License is distributed on an "AS IS" BASIS,
+     WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+     See the License for the specific language governing permissions and
+     limitations under the License.
+-->
+<com.android.qshtclauncher2.AppsCustomizeTabHost
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:launcher="http://schemas.android.com/apk/res/com.android.qshtclauncher2"
+    android:background="#FF000000">
+    <LinearLayout
+        android:id="@+id/apps_customize_content"
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"        
+        >
+        <!-- The layout_width of the tab bar gets overriden to align the content
+             with the text in the tabs in AppsCustomizeTabHost. -->
+        
+        <LinearLayout
+	        android:orientation="horizontal"
+	        android:layout_width="match_parent"
+	        android:layout_height="wrap_content"
+	        android:background="@drawable/title_bg"
+	        android:gravity="center_vertical"
+	        android:divider="@drawable/icon_tab_line"
+            android:showDividers="middle"
+            android:dividerPadding="2dp">
+	        
+	        <TextView android:id="@+id/apps_customize_title" 
+	            android:layout_width="0dp"
+	            android:layout_weight="1"
+                android:layout_height="wrap_content"
+                android:textColor="@android:color/white"
+                android:textStyle="bold"
+                android:textSize="20sp"
+                android:paddingLeft="8dp"/>
+	        
+	        
+	        
+<!-- 	        <include -->
+<!--                 android:id="@+id/market_button" -->
+<!--                 layout="@layout/market_button" -->
+<!--                 android:layout_width="70dp" -->
+<!--                 android:layout_height="wrap_content" /> -->
+	        <TextView android:id="@+id/market_button" 
+	            android:layout_width="60dp"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:text="@string/market"
+                android:textColor="@android:color/white"
+		        android:onClick="onClickAppMarketButton"
+			    android:drawableTop="@drawable/ic_title_market"
+			    android:focusable="true"
+			    android:clickable="true"
+				/>
+	        
+	        <TextView android:id="@+id/apps_customize_title_menu" 
+	            android:layout_width="60dp"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:text="@string/title_menu"
+                android:drawableTop="@drawable/ic_title_menu"
+                android:textColor="@android:color/white"/>
+	        
+        </LinearLayout>
+        <FrameLayout
+            android:id="@android:id/tabcontent"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1">
+            <com.android.qshtclauncher2.AppsCustomizePagedView
+                android:id="@+id/apps_customize_pane_content"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                launcher:maxAppCellCountX="@integer/apps_customize_maxCellCountX"
+                launcher:maxAppCellCountY="@integer/apps_customize_maxCellCountY"
+                launcher:pageLayoutWidthGap="@dimen/apps_customize_pageLayoutWidthGap"
+                launcher:pageLayoutHeightGap="@dimen/apps_customize_pageLayoutHeightGap"
+                launcher:pageLayoutPaddingTop="@dimen/apps_customize_pageLayoutPaddingTop"
+                launcher:pageLayoutPaddingBottom="@dimen/apps_customize_pageLayoutPaddingBottom"
+                launcher:pageLayoutPaddingLeft="@dimen/apps_customize_pageLayoutPaddingLeft"
+                launcher:pageLayoutPaddingRight="@dimen/apps_customize_pageLayoutPaddingRight"
+                launcher:widgetCellWidthGap="@dimen/apps_customize_widget_cell_width_gap"
+                launcher:widgetCellHeightGap="@dimen/apps_customize_widget_cell_height_gap"
+                launcher:widgetCountX="@integer/apps_customize_widget_cell_count_x"
+                launcher:widgetCountY="@integer/apps_customize_widget_cell_count_y"
+                launcher:clingFocusedX="@integer/apps_customize_cling_focused_x"
+                launcher:clingFocusedY="@integer/apps_customize_cling_focused_y"
+                launcher:maxGap="@dimen/workspace_max_gap"
+                launcher:scrollEnableLoop="false"
+                launcher:ContentType="Applications_Freq|Applications_Dl|Applications"
+                 />
+            <FrameLayout
+                android:id="@+id/animation_buffer"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:background="#FF000000"
+                android:visibility="gone" />
+
+<!--             <include -->
+<!--                 android:id="@+id/paged_view_indicator" -->
+<!--                 layout="@layout/scroll_indicator" -->
+<!--                 android:layout_width="wrap_content" -->
+<!--                 android:layout_height="wrap_content" -->
+<!--                 android:layout_gravity="bottom" /> -->
+            
+            <com.android.qshtclauncher2.QsScreenIndicator
+				android:id="@+id/paged_view_indicator"
+				android:layout_width="fill_parent"
+				android:layout_height="@dimen/qs_apps_screenindicator_height"
+				android:layout_gravity="bottom"
+				android:layout_marginBottom="@dimen/qs_apps_scrollbar_paddingbottom"
+				launcher:hasPrevScreenImage="@drawable/icon_indicator_arrow_left_s"
+				launcher:hasNextScreenImage="@drawable/icon_indicator_arrow_right_s"
+				launcher:direction="horizontal"
+				launcher:imagePadding="12dip"
+				launcher:iconWidth="0dip"
+				launcher:iconHeight="0dip"
+				launcher:textSize="14sp"
+				/> 
+        </FrameLayout>
+        
+        <FrameLayout
+            android:id="@+id/tabs_container"
+            android:layout_width="wrap_content"
+            android:layout_height="@dimen/apps_customize_tab_bar_height"
+            android:layout_marginTop="@dimen/apps_customize_tab_bar_margin_top"
+            android:layout_gravity="center_horizontal">
+            <com.android.qshtclauncher2.FocusOnlyTabWidget
+                android:id="@android:id/tabs"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_gravity="left"
+                android:background="@drawable/tab_bg"
+                android:tabStripEnabled="false"
+                android:divider="@drawable/icon_tab_line"
+                android:showDividers="middle"
+                android:dividerPadding="2dp"
+                android:tabStripLeft="@drawable/ic_tab_bg_trans"
+                android:tabStripRight="@drawable/ic_tab_bg_trans"
+                 />
+            
+        </FrameLayout>
+    </LinearLayout>
+
+    <include layout="@layout/all_apps_cling"
+        android:id="@+id/all_apps_cling"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:visibility="gone" />
+</com.android.qshtclauncher2.AppsCustomizeTabHost>

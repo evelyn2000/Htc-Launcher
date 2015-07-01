@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+<merge xmlns:android="http://schemas.android.com/apk/res/android"
+	android:layout_gravity="center_horizontal">
+	<LinearLayout android:orientation="vertical"
+	    android:layout_height="fill_parent"
+	    android:layout_width="fill_parent"
+	    android:background="@drawable/background_holo_dark">
+	    <TextView android:id="@+id/scene_name"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textSize="20dip"
+            android:gravity="center"
+            android:layout_marginTop="6dp"/> 
+		<BounceCoverFlow android:id="@+id/bookmarkCoverflow"
+			android:layout_width="fill_parent"
+			android:layout_height="match_parent"
+			android:layout_centerInParent="true"
+			android:layout_weight="1"
+			android:layout_gravity="center" />
+        <FrameLayout
+           	android:layout_width="match_parent"
+           	android:layout_height="wrap_content"
+           	android:orientation="horizontal"
+           	android:gravity="center" >
+            <ImageView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:scaleType="fitXY"
+                android:src="@drawable/hotseat_track_holo" />
+            <Button android:layout_width="match_parent" 
+	            android:layout_height="wrap_content" 
+                android:layout_weight="1"
+                android:layout_gravity="center_vertical"
+                android:text="@string/scene_instructions"
+                android:onClick="switchSceneAndBack"
+                style="?android:attr/buttonBarButtonStyle"
+                android:layout_alignParentBottom="true" />
+            </FrameLayout>
+	</LinearLayout>
+</merge>
